@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Link } from "react-router-dom";
+import { ContextApi } from "./components/context/context-api";
+import { ReduxStore } from "./components/reducx/redux-store";
+import NewThemeApi from "./components/context/secondCompo/newThemeApi";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav>
+        <Link to="/">Context API</Link> | <Link to="/about">Redux Store</Link>
+      </nav>
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <ContextApi />
+              <NewThemeApi />
+            </>
+          }
+        />
+        <Route path="/about" element={<ReduxStore />} />
+      </Routes>
     </div>
   );
 }
